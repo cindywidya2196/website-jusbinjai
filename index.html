@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Central Fruit Juice - Fresh Juice Bar</title>
+
+<style>
+:root {
+    --green: #245b43;
+    --mint: #e8f5e9;
+    --cream: #fffaf0;
+    --orange: #f47b20;
+    --dark-orange: #d96812;
+    --ink: #2c3e35;
+    --container: 1100px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* NAVBAR */
+header {
+    padding: 16px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: rgba(255, 250, 240, 0.95);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 4px 20px rgba(52, 77, 53, 0.06);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--green);
+    letter-spacing: -0.5px;
+}
+
+.logo span {
+    color: var(--orange);
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: var(--orange);
+}
+
+/* BADGE JAM OPERASIONAL */
+.store-status-badge {
+    background: var(--mint);
+    color: var(--green);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #c8e6c9;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #27ae60;
+}
+
+.status-dot.closed {
+    background: #e74c3c;
+}
+
+.cart-btn {
+    background: var(--green);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(36, 91, 67, 0.2);
+}
+
+/* FLOATING WHATSAPP */
+.float-wa {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    background: #25d366;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+    z-index: 19;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.float-wa:hover {
+    transform: scale(1.1);
+}
+
+.float-wa svg {
+    width: 28px;
+    height: 28px;
+    fill: white;
+}
+
+/* HERO SECTION */
+.hero {
+    padding: 60px 7%;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 40px;
+    background: linear-gradient(135deg, #f0f7ec 0%, #fff7ee 100%);
+}
+
+.tag {
+    background: white;
+    color: var(--green);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.hero h1 {
+    font-size: 52px;
+    line-height: 1.1;
+    color: var(--green);
+    margin: 15px 0;
+    font-weight: 800;
+}
+
+.hero h1 span {
+    color: var(--orange);
+}
+
+.slogan-genz {
+    font-style: italic;
+    font-size: 14px;
+    color: #e65100;
+    background: #ffe0b2;
+    padding: 8px 14px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.hero p {
+    line-height: 1.7;
+    color: #556b60;
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(244, 123, 32, 0.3);
+    transition: background 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--dark-orange);
+    transform: translateY(-2px);
+}
+
+.hero-art {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.big-cup {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 16 / 11;
+    border: 6px solid white;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(36, 91, 67, 0.15);
+}
+
+.big-cup img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* SECTION UMUM */
+section {
+    padding: 70px 7%;
+}
+
+.section-head {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.eyebrow {
+    color: var(--orange);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.section-head h2 {
+    font-size: 34px;
+    color: var(--green);
+    margin: 8px 0;
+    font-weight: 800;
+}
+
+.section-head p {
+    color: #667a70;
+    margin: 0;
+    font-size: 15px;
+}
+
+/* TENTANG KAMI */
+.about {
+    background: var(--mint);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    border-radius: 32px;
+    margin: 40px 7%;
+    padding: 50px;
+}
+
+.about h2 {
+    font-size: 34px;
+    color: var(--green);
+    margin-bottom: 16px;
+}
+
+.about p {
+    line-height: 1.8;
+    color: #43594e;
+    font-size: 15px;
+}
+
+.about-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-gallery img {
+    width: 100%;
+    max-height: 350px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.features {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+}
+
+.feature {
+    background: white;
+    border-radius: 50px;
+    padding: 8px 16px;
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+/* KATALOG MENU FAVORIT */
+.products {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.product {
+    background: white;
+    border-radius: 24px;
+    padding: 16px;
+    box-shadow: 0 8px 24px rgba(52, 77, 53, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #f0eadf;
+}
+
+.product:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(52, 77, 53, 0.12);
+}
+
+/* FOTO KATALOG TAMPIL UTUH & SERAGAM */
+.product-art {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    background: #f7f9f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.product-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    padding: 8px;
+    transition: transform 0.3s ease;
+}
+
+.product-art:hover img {
+    transform: scale(1.05);
+}
+
+.product h3 {
+    color: var(--green);
+    font-size: 18px;
+    margin: 14px 0 6px;
+    font-weight: 700;
+}
+
+.product p {
+    font-size: 13px;
+    color: #788279;
+    line-height: 1.4;
+    margin: 0 0 14px;
+}
+
+.price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.price {
+    color: var(--orange);
+    font-weight: 800;
+    font-size: 16px;
+}
+
+.add-btn {
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.add-btn:hover {
+    background: #183d2d;
+    transform: scale(1.08);
+}
+
+/* MODAL / POPUP FOTO DETAIL */
+.image-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.image-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.image-modal img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    object-fit: contain;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background: white;
+    color: var(--ink);
+    border: none;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* MENU LENGKAP */
+.menu-list-section {
+    max-width: var(--container);
+    margin: 0 auto;
+    background: white;
+    border-radius: 28px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(52, 77, 53, 0.06);
+    border: 1px solid #f0eadf;
+}
+
+.search-box {
+    margin: 20px 0;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 14px 18px 14px 44px;
+    border-radius: 14px;
+    border: 1px solid #d1dcd4;
+    font-size: 14px;
+    background: #faf9f5;
+    color: var(--ink);
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--green);
+    background: white;
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.menu-category-title {
+    font-size: 16px;
+    color: var(--orange);
+    margin: 28px 0 12px 0;
+    font-weight: 800;
+}
+
+.price-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.price-table th, .price-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid #f2eee9;
+}
+
+.price-table th {
+    background: var(--mint);
+    color: var(--green);
+    font-weight: 700;
+}
+
+.select-size {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid #d1dcd4;
+    background: white;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.mix-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.mix-item {
+    background: #faf8f2;
+    padding: 12px 16px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #f1eadf;
+}
+
+.mix-item span {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* TESTIMONI */
+.testimonials {
+    background: #f7f9f6;
+}
+
+.testi-grid {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.testi-card {
+    background: white;
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(52,77,53,0.04);
+    border: 1px solid #f0eadf;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.testi-card p {
+    font-size: 13px;
+    color: #556b60;
+    line-height: 1.6;
+    font-style: italic;
+    margin: 0 0 16px 0;
+}
+
+.testi-author {
+    font-weight: 700;
+    color: var(--green);
+    font-size: 13px;
+}
+
+/* KONTAK DENGAN IKON APLIKASI RESMI */
+.contact-grid {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.contact-card {
+    background: white;
+    border: 1px solid #f0eadf;
+    border-radius: 20px;
+    padding: 22px 16px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(52,77,53,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.contact-icon.wa { background: #e8f5e9; fill: #25d366; }
+.contact-icon.ig { background: #fce4ec; fill: #e1306c; }
+.contact-icon.email { background: #e3f2fd; fill: #1976d2; }
+.contact-icon.maps { background: #fff3e0; fill: #f47b20; }
+
+.contact-icon svg {
+    width: 26px;
+    height: 26px;
+}
+
+.contact-card h3 {
+    color: var(--green);
+    font-size: 16px;
+    margin: 6px 0;
+}
+
+.contact-card p {
+    font-size: 12px;
+    color: #788279;
+    line-height: 1.4;
+    margin: 0 0 14px;
+}
+
+.contact-card a {
+    margin-top: auto;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--orange);
+    text-decoration: none;
+}
+
+.btn-group {
+    display: flex;
+    gap: 6px;
+    margin-top: auto;
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-action {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--orange);
+    text-decoration: none;
+    background: none;
+    border: 1px solid var(--orange);
+    border-radius: 50px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    background: var(--green);
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+}
+
+/* KERANJANG PANEL (FLOATING BOTTOM BAR YANG RAMPING) */
+.cart-panel {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%) translateY(120%);
+    bottom: 20px;
+    background: #245b43;
+    color: white;
+    border-radius: 50px;
+    padding: 12px 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    z-index: 20;
+    width: 90%;
+    max-width: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-radius 0.3s ease;
+}
+
+.cart-panel.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+.cart-panel.expanded {
+    border-radius: 24px;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.cart-bar-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    cursor: pointer;
+}
+
+.cart-details-wrapper {
+    display: none;
+    width: 100%;
+    margin-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 12px;
+}
+
+.cart-panel.expanded .cart-details-wrapper {
+    display: block;
+}
+
+.cart-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 13px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.note-input {
+    width: 100%;
+    margin-top: 4px;
+    padding: 4px 8px;
+    font-size: 11px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 6px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.note-input::placeholder {
+    color: #cfd8dc;
+}
+
+.checkout-btn {
+    background: var(--orange);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .hero, .about {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+    }
+    .products, .testi-grid, .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .products, .testi-grid, .contact-grid, .mix-menu-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero h1 {
+        font-size: 36px;
+    }
+    nav {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOMBOL WHATSAPP MELAYANG -->
+<a href="https://wa.me/6288260147267" class="float-wa" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.6 66.4 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+</a>
+
+<!-- NAVBAR -->
+<header>
+    <div class="logo">Central Fruit Juice 🍊</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">Tentang</a>
+        <a href="#menu">Menu</a>
+        <a href="#menu-lengkap">Daftar Harga</a>
+        <a href="#testimoni">Ulasan</a>
+        <a href="#kontak">Kontak</a>
+        <div class="store-status-badge" id="store-status">
+            <span class="status-dot" id="dot-status"></span>
+            <span id="text-status">Memuat...</span>
+        </div>
+    </nav>
+
+    <button class="cart-btn" onclick="toggleCartPanel()">
+        🛒 <span id="cart-count">0</span>
+    </button>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div>
+        <span class="tag">🥝 FRESH • ASLI BUAHNYA</span>
+        <h1>Fresh sip,<br><span>happy day!</span></h1>
+        
+        <div class="slogan-genz">
+            ✨ "Vitamin C-nya lebih kuat daripada alasan doi pas di-chat."
+        </div>
+
+        <p>
+            Lagi haus atau butuh yang seger-seger buat balikin mood? Di Central Fruit Juice, 
+            semua jus dibuat langsung pas kamu pesan pakai buah segar pilihan. Buka setiap hari pukul <strong>08.00 - 22.30 WIB</strong>.
+        </p>
+        <a class="btn-primary" href="#menu">Pesan Jus Favoritmu →</a>
+    </div>
+
+    <div class="hero-art">
+        <div class="big-cup">
+            <img src="image/depan.jpeg" alt="Tampak depan toko Central Fruit Juice" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<!-- TENTANG KAMI -->
+<section class="about" id="about">
+    <div>
+        <span class="eyebrow">KENALAN YUK</span>
+        <h2>Good fruit, good mood. 💚</h2>
+        <p>
+            Kami percaya hal-hal sederhana bisa bikin harimu jadi jauh lebih baik. Makanya, di kedai kami, kualitas buah selalu dijaga supaya rasanya beneran pas di lidah—nggak pake pemanis buatan yang berlebihan. Mampir langsung atau pesan via WhatsApp ya!
+        </p>
+        <div class="features">
+            <span class="feature">🍃 Buah Segar Pilihan</span>
+            <span class="feature">⚡ Dibuat Langsung Fresh</span>
+            <span class="feature">⏰ 08.00 - 22.30 WIB</span>
+        </div>
+    </div>
+
+    <div class="about-gallery">
+        <img src="image/fasilitas.jpeg" alt="Suasana kedai Central Fruit Juice" loading="lazy">
+    </div>
+</section>
+
+<!-- MENU FAVORIT -->
+<section id="menu">
+    <div class="section-head">
+        <span class="eyebrow">SIP THE GOODNESS</span>
+        <h2>Menu Paling Dicari 🍹</h2>
+        <p>Pilihan jus buah segar favorit pelanggan setia kami. (Klik foto untuk melihat detail)</p>
+    </div>
+
+    <div class="products">
+        <article class="product">
+            <div class="product-art" onclick="openImageModal('image/jeruk.jpeg', 'Orange Sunshine')">
+                <img src="image/jeruk.jpeg" alt="Orange Sunshine" loading="lazy">
+            </div>
+            <h3>Orange Sunshine</h3>
+            <p>Jeruk segar pilihan dengan manis-asam yang pas.</p>
+            <div class="price-row">
+                <span class="price">Rp 15.000</span>
+                <button class="add-btn" onclick="addItem('Orange Sunshine', 15000)">+</button>
+            </div>
+        </article>
+
+        <article class="product">
+            <div class="product-art" onclick="openImageModal('image/semangka.jpeg', 'Watermelon Splash')">
+                <img src="image/semangka.jpeg" alt="Watermelon Splash" loading="lazy">
+            </div>
+            <h3>Watermelon Splash</h3>
+            <p>Semangka merah juicy yang ringan dan super menyegarkan.</p>
+            <div class="price-row">
+                <span class="price">Rp 14.000</span>
+                <button class="add-btn" onclick="addItem('Watermelon Splash', 14000)">+</button>
+            </div>
+        </article>
+
+        <article class="product">
+            <div class="product-art" onclick="openImageModal('image/alpukatt.jpg', 'Avocado Dream')">
+                <img src="image/alpukatt.jpg" alt="Avocado Dream" loading="lazy">
+            </div>
+            <h3>Avocado Dream</h3>
+            <p>Jus alpukat lembut, kental, dan bikin kenyang.</p>
+            <div class="price-row">
+                <span class="price">Rp 18.000</span>
+                <button class="add-btn" onclick="addItem('Avocado Dream', 18000)">+</button>
+            </div>
+        </article>
+
+        <article class="product">
+            <div class="product-art" onclick="openImageModal('image/manggaa.jpeg', 'Mango Tango')">
+                <img src="image/manggaa.jpeg" alt="Mango Tango" loading="lazy">
+            </div>
+            <h3>Mango Tango</h3>
+            <p>Mangga manis tropis berasa buah aslinya.</p>
+            <div class="price-row">
+                <span class="price">Rp 16.000</span>
+                <button class="add-btn" onclick="addItem('Mango Tango', 16000)">+</button>
+            </div>
+        </article>
+
+        <article class="product">
+            <div class="product-art" onclick="openImageModal('image/nanas.jpeg', 'Pineapple Splash')">
+                <img src="image/nanas.jpeg" alt="Pineapple Splash" loading="lazy">
+            </div>
+            <h3>Pineapple Splash</h3>
+            <p>Nanas segar penuh vitamin yang bikin langsung melek.</p>
+            <div class="price-row">
+                <span class="price">Rp 17.000</span>
+                <button class="add-btn" onclick="addItem('Pineapple Splash', 17000)">+</button>
+            </div>
+        </article>
+
+        <article class="product">
+            <div class="product-art" onclick="openImageModal('image/kuinii.jpeg', 'Kuini Fresh')">
+                <img src="image/kuinii.jpeg" alt="Kuini Fresh" loading="lazy">
+            </div>
+            <h3>Kuini Fresh</h3>
+            <p>Aroma khas buah kuini nusantara yang bikin nagih.</p>
+            <div class="price-row">
+                <span class="price">Rp 12.000</span>
+                <button class="add-btn" onclick="addItem('Kuini Fresh', 12000)">+</button>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!-- DAFTAR MENU LENGKAP -->
+<section id="menu-lengkap">
+    <div class="menu-list-section">
+        <h3>📋 Daftar Menu & Harga Lengkap</h3>
+        <p style="color: #788279; font-size: 13px; margin-bottom: 15px;">Bisa pilih ukuran gelas sesuai selera!</p>
+
+        <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="menu-search" placeholder="Cari buah atau mix jus kesukaanmu..." onkeyup="filterMenu()">
+        </div>
+
+        <div class="menu-category-title">🟢 JUS TUNGGAL</div>
+        <div style="overflow-x: auto;">
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Buah</th>
+                        <th>Reguler</th>
+                        <th>Sedang</th>
+                        <th>Besar</th>
+                        <th>Pilih</th>
+                    </tr>
+                </thead>
+                <tbody id="single-menu-table"></tbody>
+            </table>
+        </div>
+
+        <div class="menu-category-title">🟡 ANEKA JUS MIX (Rp 16.000 / Kecuali Durian Rp 20.000)</div>
+        <div class="mix-menu-grid" id="mix-menu-container"></div>
+    </div>
+</section>
+
+<!-- TESTIMONI -->
+<section class="testimonials" id="testimoni">
+    <div class="section-head">
+        <span class="eyebrow">TESTIMONI</span>
+        <h2>Kata Pelanggan Setia 💚</h2>
+        <p>Pendapat jujur dari mereka yang udah nyobain kesegarannya.</p>
+    </div>
+
+    <div class="testi-grid">
+        <div class="testi-card">
+            <p>"Jus alpukatnya beneran kental dan kerasa banget buah aslinya. Langganan tiap sore habis pulang kerja!"</p>
+            <span class="testi-author">- Kak Rina, Binjai</span>
+        </div>
+        <div class="testi-card">
+            <p>"Pesan lewat web gampang banget, tinggal klik langsung nyambung ke WA. Jus mangganya juara!"</p>
+            <span class="testi-author">- Kak Dimas</span>
+        </div>
+        <div class="testi-card">
+            <p>"Segar parah! Pilihan buahnya lengkap dan harganya ramah di kantong. Sukses terus Central Fruit Juice."</p>
+            <span class="testi-author">- Kak Siska</span>
+        </div>
+    </div>
+</section>
+
+<!-- KONTAK -->
+<section class="contact" id="kontak">
+    <div class="section-head">
+        <span class="eyebrow">LOKASI & KONTAK</span>
+        <h2>Yuk, Mampir atau Hubungi Kami 💌</h2>
+    </div>
+
+    <div class="contact-grid">
+        <div class="contact-card">
+            <div class="contact-icon wa">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.6 66.4 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+            </div>
+            <h3>WhatsApp</h3>
+            <p>Pesan cepat tanpa ribet.</p>
+            <a href="https://wa.me/6288260147267" target="_blank">Chat WA →</a>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-icon ig">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+            </div>
+            <h3>Instagram</h3>
+            <p>Lihat info & promo terbaru.</p>
+            <a href="https://www.instagram.com/frui_tjuice99?obrf=MW15Z2Z5czZleGEyMw==" target="_blank">Buka IG →</a>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-icon email">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 192L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-192L273.5 353.5c-22.8 17.1-54.3 17.1-77.1 0L0 192z"/></svg>
+            </div>
+            <h3>Email</h3>
+            <p>Untuk urusan kerja sama.</p>
+            <a href="mailto:hello@juicyday.com">Kirim Email →</a>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-icon maps">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+            </div>
+            <h3>Lokasi Toko</h3>
+            <p>Jl. Olahraga No.11, Timbang Langkat, Binjai.</p>
+            <div class="btn-group">
+                <a href="https://www.google.com/maps/place/Binjai+coconut+%26+juice/@3.6072328,98.4953011,17z/data=!4m15!1m8!3m7!1s0x303129ef2bd4c23b:0x4af9895559301ea8!2sJl.+Olahraga+No.11,+Timbang+Langkat,+Kec.+Binjai+Tim.,+Kota+Binjai,+Sumatera+Utara+20735!3b1!8m2!3d3.6072274!4d98.497876!16s%2Fg%2F11kb55pcsv!3m5!1s0x303129002fdb2201:0x751576bb5e31dd5c!8m2!3d3.6072274!4d98.497876!16s%2Fg%2F11xw4sp_b6?entry=ttu&g_ep=EgoyMDI2MTAyOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="btn-action">Maps</a>
+                <button class="btn-action" onclick="copyAddress()">Salin</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p><strong>Central Fruit Juice 🍊</strong> — Fresh sip, happy day!</p>
+    <small>© 2026 Central Fruit Juice. All rights reserved.</small>
+</footer>
+
+<!-- KERANJANG PANEL (FLOATING BOTTOM BAR) -->
+<div class="cart-panel" id="cart-panel">
+    <div class="cart-bar-info" onclick="toggleCartExpand()">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 20px;">🛒</span>
+            <div>
+                <strong id="cart-count-bar" style="font-size: 14px;">0 Item</strong>
+                <span style="font-size: 12px; opacity: 0.8; display: block;" id="cart-total-bar">Rp 0</span>
+            </div>
+        </div>
+        <span style="font-size: 12px; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 20px;" id="expand-text">Lihat Detail ∧</span>
+    </div>
+
+    <div class="cart-details-wrapper">
+        <div id="cart-items"><p style="font-size:12px; opacity:0.8;">Belum ada jus dipilih.</p></div>
+        
+        <div style="margin: 12px 0 8px 0; font-size:12px;">
+            <label><strong>Metode Pembayaran:</strong></label>
+            <select id="payment-select" style="width:100%; padding:8px; margin-top:4px; border-radius:8px; border:1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.9); color: var(--ink);">
+                <option value="Tunai / Cash">Tunai / Cash di Toko</option>
+                <option value="Transfer / QRIS">Transfer Bank / QRIS</option>
+            </select>
+        </div>
+
+        <button class="checkout-btn" onclick="checkout()">Pesan via WhatsApp 🚀</button>
+    </div>
+</div>
+
+<!-- MODAL POPUP FOTO DETAIL -->
+<div class="image-modal" id="imageModal" onclick="closeImageModal()">
+    <button class="close-modal" onclick="closeImageModal()">&times;</button>
+    <img id="modalImage" src="" alt="Detail Foto">
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+const cart = {};
+const NOMOR_WHATSAPP = "6288260147267";
+
+const singleMenus = [
+    { name: "Alpukat", reg: 8000, sed: 11000, bes: 16000 },
+    { name: "Jeruk", reg: 5000, sed: 8000, bes: 12000 },
+    { name: "Mangga", reg: 8000, sed: 11000, bes: 16000 },
+    { name: "Melon", reg: 5000, sed: 8000, bes: 12000 },
+    { name: "Semangka", reg: 5000, sed: 7000, bes: 10000 },
+    { name: "Anggur", reg: 7000, sed: 10000, bes: 15000 },
+    { name: "Sirsak", reg: 8000, sed: 11000, bes: 16000 },
+    { name: "Apel", reg: 7000, sed: 11000, bes: 16000 },
+    { name: "Tomat", reg: 5000, sed: 7000, bes: 10000 },
+    { name: "Nanas", reg: 5000, sed: 9000, bes: 12000 },
+    { name: "Kuini", reg: 6000, sed: 8000, bes: 12000 },
+    { name: "Pepaya", reg: 5000, sed: 7000, bes: 10000 },
+    { name: "Jambu", reg: 6000, sed: 8000, bes: 12000 },
+    { name: "Strawbery", reg: 7000, sed: 10000, bes: 13000 },
+    { name: "Pisang", reg: 5000, sed: 7000, bes: 10000 },
+    { name: "Buah Naga", reg: 5000, sed: 8000, bes: 10000 },
+    { name: "Kiwi", reg: 9000, sed: 11000, bes: 16000 },
+    { name: "Wortel", reg: 5000, sed: 7000, bes: 10000 },
+    { name: "Pir", reg: 5000, sed: 8000, bes: 12000 },
+    { name: "Terong Belanda", reg: 7000, sed: 10000, bes: 13000 },
+    { name: "Nangka", reg: 7000, sed: 10000, bes: 13000 },
+    { name: "Timun", reg: 5000, sed: 7000, bes: 10000 },
+    { name: "Markqisa", reg: 5000, sed: 7000, bes: 10000 },
+    { name: "Buah Bit", reg: 9000, sed: 13000, bes: 16000 },
+    { name: "Belimbing", reg: 7000, sed: 10000, bes: 15000 },
+    { name: "Sunkist", reg: 8000, sed: 11000, bes: 16000 }
+];
+
+const mixMenus = [
+    "Mangga Mix Sirsak", "Anggur Mix Kiwi", "Pir Mix Nanas", "Apel Mix Jeruk", 
+    "Sirsak Mix Jeruk", "Anggur Mix Strewberry", "Apel Mix Strawberry", "Apel Mix Pir", 
+    "Pisang Mix Strawberry", "Wortel Mix Apel", "Wortel Mix Tomat", "Wortel Mix Jeruk", 
+    "Wortel Mix Pisang", "Alpukat Mix Pisang", "Alpukat Mix Kuini", "Alpukat Mix Kelapa", 
+    "Belimbing Mix Nanas", "Belimbing Mix Strawberry", "Mangga Mix Nanas", "B.Naga Mix Pisang", 
+    "B.Naga Mix Kuini", "B.Naga Mix Nanas", "Marqisa Mix Jeruk", "Melon Mix Apel", 
+    "Martabe", "Strawberry Mix Nanas", "Strawberry Mix Kiwi", "Sunkist Mix Lemon", 
+    "Kiwi Mix Timun", "Alpukat Mix Durian"
+];
+
+function checkStoreStatus() {
+    const now = new Date();
+    const currentTimeMinutes = now.getHours() * 60 + now.getMinutes();
+    const openTime = 8 * 60;
+    const closeTime = 22 * 60 + 30;
+
+    const dot = document.getElementById("dot-status");
+    const text = document.getElementById("text-status");
+
+    if (currentTimeMinutes >= openTime && currentTimeMinutes <= closeTime) {
+        dot.className = "status-dot";
+        text.textContent = "Buka (08:00 - 22:30)";
+    } else {
+        dot.className = "status-dot closed";
+        text.textContent = "Tutup (Buka 08:00)";
+    }
+}
+
+function renderMenuTables() {
+    const singleTableBody = document.getElementById("single-menu-table");
+    let htmlSingle = "";
+    
+    singleMenus.forEach((item, index) => {
+        htmlSingle += `
+            <tr class="single-row" data-name="${item.name.toLowerCase()}">
+                <td><strong>${item.name}</strong></td>
+                <td>${rupiah(item.reg)}</td>
+                <td>${rupiah(item.sed)}</td>
+                <td>${rupiah(item.bes)}</td>
+                <td>
+                    <select id="size-${index}" class="select-size">
+                        <option value="Reguler|${item.reg}">Reguler</option>
+                        <option value="Sedang|${item.sed}">Sedang</option>
+                        <option value="Besar|${item.bes}">Besar</option>
+                    </select>
+                    <button class="add-btn" style="width:28px;height:28px;font-size:14px;display:inline-flex;margin-left:4px;" onclick="addSelectedSize('${item.name}', 'size-${index}')">+</button>
+                </td>
+            </tr>
+        `;
+    });
+    singleTableBody.innerHTML = htmlSingle;
+
+    const mixContainer = document.getElementById("mix-menu-container");
+    let htmlMix = "";
+    mixMenus.forEach(mix => {
+        let price = mix.includes("Durian") ? 20000 : 16000;
+        htmlMix += `
+            <div class="mix-item" data-name="${mix.toLowerCase()}">
+                <div>
+                    <span>🍹 ${mix}</span>
+                    <small style="display:block; color:#788279; font-size:11px;">${rupiah(price)}</small>
+                </div>
+                <button class="add-btn" style="width:30px;height:30px;font-size:16px;" onclick="addItem('${mix} (Mix)', ${price})">+</button>
+            </div>
+        `;
+    });
+    mixContainer.innerHTML = htmlMix;
+}
+
+function filterMenu() {
+    const keyword = document.getElementById("menu-search").value.toLowerCase();
+    document.querySelectorAll(".single-row").forEach(row => {
+        row.style.display = row.getAttribute("data-name").includes(keyword) ? "" : "none";
+    });
+    document.querySelectorAll(".mix-item").forEach(item => {
+        item.style.display = item.getAttribute("data-name").includes(keyword) ? "flex" : "none";
+    });
+}
+
+function copyAddress() {
+    navigator.clipboard.writeText("Jl. Olahraga No.11, Timbang Langkat, Kec. Binjai Tim., Kota Binjai, Sumatera Utara 20735").then(() => {
+        alert("Alamat toko berhasil disalin! 📋");
+    });
+}
+
+function rupiah(number) {
+    return "Rp " + number.toLocaleString("id-ID");
+}
+
+function addSelectedSize(name, selectId) {
+    const [size, priceStr] = document.getElementById(selectId).value.split("|");
+    addItem(`${name} (${size})`, parseInt(priceStr));
+}
+
+function addItem(name, price) {
+    if (!cart[name]) cart[name] = { price: price, qty: 0, note: "" };
+    cart[name].qty++;
+    renderCart();
+    document.getElementById("cart-panel").classList.add("show");
+}
+
+function changeQty(name, delta) {
+    if (!cart[name]) return;
+    cart[name].qty += delta;
+    if (cart[name].qty <= 0) delete cart[name];
+    renderCart();
+}
+
+function updateNote(name, val) {
+    if (cart[name]) cart[name].note = val;
+}
+
+function renderCart() {
+    let count = 0, total = 0, lines = "";
+    for (const [name, item] of Object.entries(cart)) {
+        count += item.qty;
+        total += item.price * item.qty;
+        lines += `
+            <div class="cart-line">
+                <div style="flex-grow:1;">
+                    <strong>${name}</strong>
+                    <small style="display:block;opacity:0.8;">${rupiah(item.price * item.qty)}</small>
+                    <input type="text" class="note-input" placeholder="Catatan (cth: es dikit)" value="${item.note}" oninput="updateNote('${name}', this.value)">
+                </div>
+                <div style="display:flex;align-items:center;gap:6px;">
+                    <button onclick="changeQty('${name}', -1)" style="width:22px;height:22px;border-radius:50%;border:none;background:rgba(255,255,255,0.2);color:white;cursor:pointer;">−</button>
+                    <span>${item.qty}</span>
+                    <button onclick="changeQty('${name}', 1)" style="width:22px;height:22px;border-radius:50%;border:none;background:rgba(255,255,255,0.2);color:white;cursor:pointer;">+</button>
+                </div>
+            </div>
+        `;
+    }
+    document.getElementById("cart-count").textContent = count;
+    document.getElementById("cart-count-bar").textContent = count + " Item dipilih";
+    document.getElementById("cart-total-bar").textContent = rupiah(total);
+    
+    document.getElementById("cart-items").innerHTML = lines || '<p style="font-size:12px; opacity:0.8;">Belum ada jus dipilih.</p>';
+    
+    if (count === 0) {
+        document.getElementById("cart-panel").classList.remove("show");
+        document.getElementById("cart-panel").classList.remove("expanded");
+    }
+}
+
+function toggleCartPanel() {
+    const panel = document.getElementById("cart-panel");
+    if (Object.keys(cart).length > 0) {
+        panel.classList.toggle("show");
+    } else {
+        alert("Keranjang masih kosong, yuk pilih jus dulu!");
+    }
+}
+
+function toggleCartExpand() {
+    const panel = document.getElementById("cart-panel");
+    panel.classList.toggle("expanded");
+    const expandText = document.getElementById("expand-text");
+    if (panel.classList.contains("expanded")) {
+        expandText.textContent = "Tutup ∨";
+    } else {
+        expandText.textContent = "Lihat Detail ∧";
+    }
+}
+
+function openImageModal(imageSrc, altText) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    modalImg.src = imageSrc;
+    modalImg.alt = altText;
+    modal.classList.add("show");
+}
+
+function closeImageModal() {
+    const modal = document.getElementById("imageModal");
+    modal.classList.remove("show");
+}
+
+function checkout() {
+    if (Object.keys(cart).length === 0) {
+        alert("Keranjang masih kosong, yuk pilih jus dulu!");
+        return;
+    }
+    const payment = document.getElementById("payment-select").value;
+    let message = "Halo Central Fruit Juice! Saya mau pesan:\n";
+    let total = 0;
+    for (const [name, item] of Object.entries(cart)) {
+        message += `- ${name} x ${item.qty} (${rupiah(item.price * item.qty)})`;
+        if (item.note) message += `\n  Catatan: _${item.note}_`;
+        message += `\n`;
+        total += item.price * item.qty;
+    }
+    message += `\nMetode Pembayaran: ${payment}`;
+    message += `\nTotal: ` + rupiah(total);
+
+    window.open("https://wa.me/" + NOMOR_WHATSAPP + "?text=" + encodeURIComponent(message), "_blank");
+}
+
+window.onload = function() {
+    renderMenuTables();
+    checkStoreStatus();
+    setInterval(checkStoreStatus, 60000);
+};
+</script>
+
+</body>
+</html>
